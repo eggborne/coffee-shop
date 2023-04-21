@@ -1,13 +1,10 @@
-import Header from "./Header";
+import CoffeeControl from "./CoffeeControl";
 import Footer from "./Footer";
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <main>
-        hello
-      </main>
+      <CoffeeControl />
       <Footer />
     </div>
   );

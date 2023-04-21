@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+## Component Diagram
+
+![Figma component diagram](./public/figma_component_diagram.png);
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

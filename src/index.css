@@ -160,6 +160,10 @@ form textarea {
   width: 100%;
 }
 
+.form-row.hidden {
+  display: none;
+}
+
 .form-row.buttons {
   flex-direction: column;
   margin-top: 1rem;
@@ -241,6 +245,7 @@ form textarea {
   pointer-events: none;
   opacity: 0.1;
   transition: all 100ms ease;
+  z-index: 1;
 }
 
 .veil.showing {

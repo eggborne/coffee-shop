@@ -8,7 +8,7 @@ function BagList(props) {
       <h2>Bag list</h2>
       <div className="item-list">
         {props.bagList.length ?
-          props.bagList.map(bag => 
+          props.bagList.map(bag =>
             <BagListItem bag={bag} key={bag.id} />
           )
           :

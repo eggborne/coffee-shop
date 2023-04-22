@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from './Header';
 import BagList from './BagList';
+import Modal from './Modal';
+import Form from './Form';
 import { v4 } from 'uuid';
 
 class CoffeeControl extends React.Component {
@@ -8,7 +10,7 @@ class CoffeeControl extends React.Component {
     super(props);
     this.state = {
       bagList: [
-       { name: 'Sumatra', origin: 'Kenya', roast: 'light', price: 1295, id: v4() },
+       { name: 'Sumatra', origin: 'Kenya', roast: 'light', price: 1295, quantity: 130, id: v4() },
       ],
       selectedCoffee: null,
       modalShowing: null,
@@ -26,11 +28,11 @@ class CoffeeControl extends React.Component {
   }
 
   handleAddingNewItem = (newItem) => {
-    const newItemList = [...this.state.itemList];
+    const newItemList = [...this.state.bagList];
     newItemList.push(newItem);
     this.setState({
-      itemList: newItemList,
-      newItemFormShowing: false,
+      bagList: newItemList,
+      modalShowing: null,
     });
   }
 
@@ -39,6 +41,18 @@ class CoffeeControl extends React.Component {
       <React.Fragment>
         <Header />
         <main>
+          <Modal 
+            type="create" 
+            showing={this.state.modalShowing === 'create'}
+            headerText={'Add new coffee bag'}
+            bodyComponent={
+              <Form 
+                type='create' 
+                onClickSubmit={this.handleAddingNewItem}
+                onClickCancel={() => this.handleModalCall()}
+              />
+            }
+          />
           <BagList bagList={this.state.bagList} onClickAddNewBag={() => this.handleModalCall('create')}/>
         </main>
       </React.Fragment>

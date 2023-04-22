@@ -35,6 +35,7 @@ class BagDetails extends React.Component {
                 roast: this.props.roast,
                 quantity: this.props.quantity,
                 id: this.props.id,
+                // ...this.props,
               }}
               onClickSubmit={this.props.onClickSaveEdit}
               onClickCancel={() => this.callModal()}
@@ -48,13 +49,13 @@ class BagDetails extends React.Component {
           <div>Origin: {this.props.origin}</div>
           <div>Roast: {this.props.roast}</div>
           <div>Price: {formattedPrice}</div>
-          <div>Quantity: {this.props.quantity} lbs.</div>
+          <div>Quantity: {parseInt(this.props.quantity)} lbs.</div>
           <div>id: {this.props.id}</div>
           <div className='button-area'>
             <button onClick={() => this.callModal('edit')} className='yellow'>Edit</button>
             <button className='red'>Delete</button>
-            <button className='green'>Buy 1 lb.</button>
-            <button className='orange'>Restock 1 lb.</button>
+            <button disabled={this.props.quantity === 0} onClick={() => this.props.onClickAdjustQuantity(this.props.id, -1)} className='green'>{this.props.quantity === 0 ? 'SOLD OUT' : 'Sell 1 lb.'}</button>
+            <button disabled={this.props.quantity === 130} onClick={() => this.props.onClickAdjustQuantity(this.props.id, 1)} className='orange'>{this.props.quantity === 130 ? 'BAG FULL' : 'Restock 1 lb.'}</button>
           </div>
         </div>
         <button onClick={this.props.onClickBackToList}>Back to list</button>
@@ -73,6 +74,7 @@ BagDetails.propTypes = {
   onClickEdit: PropTypes.func,
   onClickBackToList: PropTypes.func,
   onClickSaveEdit: PropTypes.func,
+  onClickAdjustQuantity: PropTypes.func,
 }
 
 export default BagDetails;

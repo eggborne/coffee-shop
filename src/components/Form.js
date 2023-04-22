@@ -10,7 +10,7 @@ function Form(props) {
       name: e.target.name.value,
       origin: e.target.origin.value,
       roast: e.target.roast.value,
-      price: e.target.price.value,
+      price: parseInt(e.target.price.value),
       quantity: 130,
       id: v4(),
     });
@@ -22,8 +22,8 @@ function Form(props) {
       name: e.target.name.value || e.target.name.placeholder,
       origin: e.target.origin.value || e.target.origin.placeholder,
       roast: e.target.roast.value || e.target.roast.placeholder,
-      price: e.target.price.value || e.target.price.placeholder,
-      quantity: e.target.quantity.value || e.target.quantity.placeholder,
+      price: parseInt(e.target.price.value) || parseInt(e.target.price.placeholder),
+      quantity: parseInt(e.target.quantity.value) || parseInt(e.target.quantity.placeholder),
       id: props.editingItem.id,
     }
     console.log(editedBag)

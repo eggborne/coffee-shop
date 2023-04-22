@@ -49,6 +49,7 @@ button:disabled:hover {
 button.green {
   color: #eee;
   background-color: var(--button-green);
+  min-width: 10rem;
 }
 button.yellow {
   color: #eee;
@@ -61,6 +62,7 @@ button.red {
 button.orange {
   color: #eee;
   background-color: var(--button-orange);
+  min-width: 10rem;
 }
 
 button:hover {

@@ -50,6 +50,15 @@ class CoffeeControl extends React.Component {
     });
   }
 
+  handleAdjustQuantity = (id, adjustment) => {
+    const newBagList = [...this.state.bagList];
+    const adjustedItem = this.getItemById(id, newBagList);
+    adjustedItem.quantity += adjustment;
+    this.setState({
+      bagList: newBagList,
+    });
+  }
+
   handleChangingSelectedItem = (newSelected) => {
     console.log('changing selected to', newSelected)
     this.setState({
@@ -62,7 +71,6 @@ class CoffeeControl extends React.Component {
       <React.Fragment>
         <Header />
         <main>
-          
           {this.state.selectedCoffee === null ?
             <React.Fragment>
               <Modal 
@@ -84,16 +92,11 @@ class CoffeeControl extends React.Component {
               />
             </React.Fragment>
             :
-            // <BagDetails 
-            //   bag={this.state.selectedCoffee}
-            //   onClickSaveEdit={this.handleSaveEdit}
-            //   onClickBackToList={this.returnToList} 
-            // />
             <BagDetails 
               {...this.state.selectedCoffee}
-              
               onClickSaveEdit={this.handleSaveEdit}
-              onClickBackToList={this.returnToList} 
+              onClickAdjustQuantity={this.handleAdjustQuantity}
+              onClickBackToList={this.returnToList}
             />
           }
         </main>

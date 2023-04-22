@@ -18,15 +18,17 @@ function Form(props) {
 
   function handleEditItemFormSubmission(e) {
     e.preventDefault();
-    props.onClickSubmit({
-      name: e.target.name.value,
-      origin: e.target.origin.value,
-      roast: e.target.roast.value,
-      price: e.target.price.value,
-      quantity: e.target.quantity.value,
+    const editedBag = {
+      name: e.target.name.value || e.target.name.placeholder,
+      origin: e.target.origin.value || e.target.origin.placeholder,
+      roast: e.target.roast.value || e.target.roast.placeholder,
+      price: e.target.price.value || e.target.price.placeholder,
+      quantity: e.target.quantity.value || e.target.quantity.placeholder,
       id: props.editingItem.id,
-    });
-    props.returnToList();
+    }
+    console.log(editedBag)
+    props.onClickSubmit(editedBag);
+    props.returnToList(); // need to do this because BagDetail component does not update immediately :(
   }
 
   let formSubmissionFunction;
@@ -45,10 +47,10 @@ function Form(props) {
       </div>
       <div className="form-row">
         <label for="roast">Roast</label>
-        <select name="roast">
-          <option selected={props.editingItem && props.editingItem.roast === "light"} name="roast" value="light">Light</option>
-          <option selected={props.editingItem && props.editingItem.roast === "medium"} name="roast" value="medium">Medium</option>
-          <option selected={props.editingItem && props.editingItem.roast === "dark"} name="roast" value="dark">Dark</option>
+        <select defaultValue={props.editingItem && props.editingItem.roast} name="roast">
+          <option name="roast" value="light">Light</option>
+          <option name="roast" value="medium">Medium</option>
+          <option name="roast" value="dark">Dark</option>
         </select>
       </div>
       <div className="form-row">

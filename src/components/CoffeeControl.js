@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import BagList from './BagList';
+import BagDetails from './BagDetails';
 import Modal from './Modal';
 import Form from './Form';
 import { v4 } from 'uuid';
@@ -22,9 +23,14 @@ class CoffeeControl extends React.Component {
   };
 
   handleModalCall = (type = null) => {
-    this.setState(() => ({
+    this.setState({
       modalShowing: type,
-    }));
+    });
+  }
+  returnToList = () => {
+    this.setState({
+      selectedCoffee: null,
+    });
   }
 
   handleAddingNewItem = (newItem) => {
@@ -36,24 +42,60 @@ class CoffeeControl extends React.Component {
     });
   }
 
+  handleSaveEdit = (editedItem) => {
+    const newBagList = [...this.state.bagList];
+    newBagList[newBagList.indexOf(this.getItemById(editedItem.id))] = editedItem;
+    this.setState({
+      bagList: newBagList,
+    });
+  }
+
+  handleChangingSelectedItem = (newSelected) => {
+    console.log('changing selected to', newSelected)
+    this.setState({
+      selectedCoffee: newSelected
+    });
+  }
+
   render() {
     return (
       <React.Fragment>
         <Header />
         <main>
-          <Modal 
-            type="create" 
-            showing={this.state.modalShowing === 'create'}
-            headerText={'Add new coffee bag'}
-            bodyComponent={
-              <Form 
-                type='create' 
-                onClickSubmit={this.handleAddingNewItem}
-                onClickCancel={() => this.handleModalCall()}
+          
+          {this.state.selectedCoffee === null ?
+            <React.Fragment>
+              <Modal 
+                type="create" 
+                showing={this.state.modalShowing === 'create'}
+                headerText={'Add new coffee bag'}
+                bodyComponent={
+                  <Form 
+                    type='create' 
+                    onClickSubmit={this.handleAddingNewItem}
+                    onClickCancel={() => this.handleModalCall()}
+                  />
+                }
               />
-            }
-          />
-          <BagList bagList={this.state.bagList} onClickAddNewBag={() => this.handleModalCall('create')}/>
+              <BagList 
+                bagList={this.state.bagList} 
+                onClickAddNewBag={() => this.handleModalCall('create')}
+                handleChangingSelectedItem={this.handleChangingSelectedItem}
+              />
+            </React.Fragment>
+            :
+            // <BagDetails 
+            //   bag={this.state.selectedCoffee}
+            //   onClickSaveEdit={this.handleSaveEdit}
+            //   onClickBackToList={this.returnToList} 
+            // />
+            <BagDetails 
+              {...this.state.selectedCoffee}
+              
+              onClickSaveEdit={this.handleSaveEdit}
+              onClickBackToList={this.returnToList} 
+            />
+          }
         </main>
       </React.Fragment>
     );

@@ -9,7 +9,11 @@ function BagList(props) {
       <div className="item-list">
         {props.bagList.length ?
           props.bagList.map(bag =>
-            <BagListItem bag={bag} key={bag.id} />
+            <BagListItem 
+              bag={bag} 
+              key={bag.id} 
+              onClickViewDetails={props.handleChangingSelectedItem}
+            />
           )
           :
           <div>No coffee bags have been added yet!</div>
@@ -25,6 +29,7 @@ function BagList(props) {
 BagList.propTypes = {
   bagList: PropTypes.arrayOf(PropTypes.object),
   onClickAddNewBag: PropTypes.func,
+  handleChangingSelectedItem: PropTypes.func,
 }
 
 export default BagList;

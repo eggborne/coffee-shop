@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import BagListItem from './BagListItem';
+
 function BagList(props) {
   return (
     <React.Fragment>
       <h2>Bag list</h2>
       <div className="item-list">
         {props.bagList.length ?
-          <div>list the bags!</div>
+          props.bagList.map(bag => 
+            <BagListItem bag={bag} key={bag.id} />
+          )
           :
           <div>No coffee bags have been added yet!</div>
         }
@@ -22,4 +26,5 @@ BagList.propTypes = {
   bagList: PropTypes.arrayOf(PropTypes.object),
   onClickAddNewBag: PropTypes.func,
 }
+
 export default BagList;

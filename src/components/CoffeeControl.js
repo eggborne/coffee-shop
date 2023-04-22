@@ -1,13 +1,15 @@
 import React from 'react';
 import Header from './Header';
-import { v4 } from 'uuid';
 import BagList from './BagList';
+import { v4 } from 'uuid';
 
 class CoffeeControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      bagList: [],
+      bagList: [
+       { name: 'Sumatra', origin: 'Kenya', roast: 'light', price: 1295, id: v4() },
+      ],
       selectedCoffee: null,
       modalShowing: null,
     };

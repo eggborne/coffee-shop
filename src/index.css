@@ -126,10 +126,8 @@ header h1 {
   font-size: 150%;
   font-weight: bold;
 }
-.item-list-entry > div:nth-child(3) {
-  font-style: italic;
-}
-.item-list-entry > div:nth-last-child(2) {
+
+.item-list-entry > div:nth-last-child(1) {
   position: absolute;
   bottom: 0.25rem;
   right: 0.25rem;

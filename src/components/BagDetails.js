@@ -29,13 +29,12 @@ class BagDetails extends React.Component {
             <Form 
               type='edit' 
               editingItem={{
-                // name: this.props.name,
-                // price: this.props.price,
-                // origin: this.props.origin,
-                // roast: this.props.roast,
-                // quantity: this.props.quantity,
-                // id: this.props.id,
-                ...this.props,
+                name: this.props.name,
+                price: this.props.price,
+                origin: this.props.origin,
+                roast: this.props.roast,
+                quantity: this.props.quantity,
+                id: this.props.id,
               }}
               onClickSubmit={this.props.onClickSaveEdit}
               onClickCancel={() => this.callModal()}
@@ -49,7 +48,7 @@ class BagDetails extends React.Component {
           showing={this.state.modalShowing === 'delete'}
           bodyComponent={
             <div className='button-area'>
-              <button onClick={() => {this.props.onClickConfirmDelete(this.props.id); this.callModal();}} className='red'>DO IT</button>
+              <button onClick={() => this.props.onClickConfirmDelete(this.props.id)} className='red'>DO IT</button>
               <button onClick={() => this.callModal()} type='button'>Cancel</button>
             </div>
           } 

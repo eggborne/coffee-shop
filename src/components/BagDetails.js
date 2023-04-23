@@ -29,13 +29,13 @@ class BagDetails extends React.Component {
             <Form 
               type='edit' 
               editingItem={{
-                name: this.props.name,
-                price: this.props.price,
-                origin: this.props.origin,
-                roast: this.props.roast,
-                quantity: this.props.quantity,
-                id: this.props.id,
-                // ...this.props,
+                // name: this.props.name,
+                // price: this.props.price,
+                // origin: this.props.origin,
+                // roast: this.props.roast,
+                // quantity: this.props.quantity,
+                // id: this.props.id,
+                ...this.props,
               }}
               onClickSubmit={this.props.onClickSaveEdit}
               onClickCancel={() => this.callModal()}
@@ -43,6 +43,18 @@ class BagDetails extends React.Component {
             />
           } 
         />
+        <Modal 
+          type='delete' 
+          headerText={`Delete ${this.props.name}?`}
+          showing={this.state.modalShowing === 'delete'}
+          bodyComponent={
+            <div className='button-area'>
+              <button onClick={() => {this.props.onClickConfirmDelete(this.props.id); this.callModal();}} className='red'>DO IT</button>
+              <button onClick={() => this.callModal()} type='button'>Cancel</button>
+            </div>
+          } 
+        />
+
         <h2>Details for {this.props.name}</h2>
         <div className='item-detail-entry'>
           <div>Name: {this.props.name}</div>
@@ -53,7 +65,7 @@ class BagDetails extends React.Component {
           <div>id: {this.props.id}</div>
           <div className='button-area'>
             <button onClick={() => this.callModal('edit')} className='yellow'>Edit</button>
-            <button className='red'>Delete</button>
+            <button onClick={() => this.callModal('delete')}className='red'>Delete</button>
             <button disabled={this.props.quantity === 0} onClick={() => this.props.onClickAdjustQuantity(this.props.id, -1)} className='green'>{this.props.quantity === 0 ? 'SOLD OUT' : 'Sell 1 lb.'}</button>
             <button disabled={this.props.quantity === 130} onClick={() => this.props.onClickAdjustQuantity(this.props.id, 1)} className='orange'>{this.props.quantity === 130 ? 'BAG FULL' : 'Restock 1 lb.'}</button>
           </div>
@@ -71,9 +83,9 @@ BagDetails.propTypes = {
   price: PropTypes.number,
   quantity: PropTypes.number,
   id: PropTypes.string,
-  onClickEdit: PropTypes.func,
   onClickBackToList: PropTypes.func,
   onClickSaveEdit: PropTypes.func,
+  onClickConfirmDelete: PropTypes.func,
   onClickAdjustQuantity: PropTypes.func,
 }
 

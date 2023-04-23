@@ -42,6 +42,15 @@ class CoffeeControl extends React.Component {
     });
   }
 
+  handleConfirmDelete = (id) => {
+    const newBagList = [...this.state.bagList];
+    newBagList.splice(newBagList.indexOf(this.getItemById(id)), 1);
+    this.setState({
+      bagList: newBagList,
+      selectedCoffee: null,
+    });
+  }
+
   handleSaveEdit = (editedItem) => {
     const newBagList = [...this.state.bagList];
     newBagList[newBagList.indexOf(this.getItemById(editedItem.id))] = editedItem;
@@ -95,6 +104,7 @@ class CoffeeControl extends React.Component {
             <BagDetails 
               {...this.state.selectedCoffee}
               onClickSaveEdit={this.handleSaveEdit}
+              onClickConfirmDelete={this.handleConfirmDelete}
               onClickAdjustQuantity={this.handleAdjustQuantity}
               onClickBackToList={this.returnToList}
             />

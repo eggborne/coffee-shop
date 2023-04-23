@@ -5,7 +5,6 @@ import BagListItem from './BagListItem';
 function BagList(props) {
   return (
     <React.Fragment>
-      <h2>Bag list</h2>
       <div className="item-list">
         {props.bagList.length ?
           props.bagList.map(bag =>

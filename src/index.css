@@ -118,24 +118,36 @@ header h1 {
   padding-bottom: 2rem;
 }
 
+.item-list-entry {
+  /* flex-direction: row; */
+}
+
 .item-list-entry.low-warning::after,
 .item-detail-entry.low-warning::after {
+  box-sizing: border-box;
   position: absolute;
   content: 'ALMOST EMPTY';
   color: orange;
   font-weight: bold;
   height: 100%;
+  width: 100%;
+  text-align: right;
   top: 0;
-  right: 0;
+  left: 0;
   padding: 0.25rem 1rem;
   font-size: 2rem;
+  background-color: #3a2c0a66;
+  outline: 0.1rem solid yellow;
   pointer-events: none;
+  z-index: -1;
 }
 
 .item-list-entry.low-warning.out-of-stock::after,
 .item-detail-entry.low-warning.out-of-stock::after {
   content: 'OUT OF STOCK';
+  outline: 0.1rem solid red;
   color: red;
+  background-color: #3a0a0a66;
 }
 
 .item-list-entry.low-warning::after {
@@ -144,6 +156,16 @@ header h1 {
 
 .item-detail-entry {
   width: unset;
+}
+
+.light {
+  background-color: rgb(255, 186, 103, 0.5);
+}
+.medium {
+  background-color: rgb(180, 115, 37, 0.5);
+}
+.dark {
+  background-color: rgba(108, 66, 16, 0.5);
 }
 
 .item-list-entry .button-area {
@@ -163,11 +185,11 @@ header h1 {
 }
 
 .item-list-entry > div:first-child {
-  font-size: 150%;
+  font-size: 200%;
   font-weight: bold;
 }
 
-.item-list-entry > div:nth-last-child(2) {
+.item-list-entry > .id-tag {
   position: absolute;
   bottom: 0.25rem;
   right: 0.25rem;
@@ -293,35 +315,20 @@ form textarea {
   pointer-events: all;
 }
 
-.cart-widget {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: var(--header-height);
-  max-height: var(--header-height);
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: max-content 1fr;
-  align-items: center;
-  gap: 0 1rem;
-  margin-right: 0.5rem;
-  padding: 0.5rem 0;
+.bag-display {
+  width: 12rem;
+  height: 10rem;
+  align-self: center;
+  margin: 1rem;
+  border-radius: 0 0 40% 40%;
+  border: 0.5rem solid rgb(206, 118, 36);
+  border-top: none;
+  background-image: url(../public/coffeebeans.png);
+  background-repeat: repeat-x;
+  background-size: contain;
+  transition: all 100ms ease;
 }
 
-.cart-widget > button {
-  grid-column-start: 2;
-  grid-row-start: 1;
-  grid-row-end: 3;
-  margin: 0;
-  padding: 0 1rem;
-  height: calc(var(--header-height) - 1.25rem);
-}
-
-.cart-widget > div {
-  grid-column-start: 1;
-  grid-column-end: 1;
-}
-
-.cart-widget > div:nth-of-type(2) {
-  grid-row-start: 2;
+.item-detail-entry .bag-display {
+  align-self: flex-start;
 }

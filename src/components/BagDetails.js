@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from './Modal';
 import Form from './Form';
+import BagDisplay from './BagDisplay';
 import PropTypes from 'prop-types';
 
 class BagDetails extends React.Component {
@@ -76,6 +77,7 @@ class BagDetails extends React.Component {
             <button disabled={this.props.quantity === 0} onClick={() => this.props.onClickAdjustQuantity(this.props.id, -1)} className='green'>{this.props.quantity === 0 ? 'SOLD OUT' : 'Sell 1 lb.'}</button>
             <button disabled={this.props.quantity === 130} onClick={() => this.props.onClickAdjustQuantity(this.props.id, 1)} className='orange'>{this.props.quantity === 130 ? 'BAG FULL' : 'Restock 1 lb.'}</button>
           </div>
+          <BagDisplay quantity={this.props.quantity} />
         </div>
         <button onClick={this.props.onClickBackToList}>Back to list</button>
       </React.Fragment>

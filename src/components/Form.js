@@ -26,7 +26,6 @@ function Form(props) {
       quantity: parseInt(e.target.quantity.value) || parseInt(e.target.quantity.placeholder),
       id: props.editingItem.id,
     }
-    console.log(editedBag)
     props.onClickSubmit(editedBag);
     props.returnToList(); // need to do this because BagDetail component does not update immediately :(
   }

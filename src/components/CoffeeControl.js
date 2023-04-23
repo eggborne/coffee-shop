@@ -69,7 +69,6 @@ class CoffeeControl extends React.Component {
   }
 
   handleChangingSelectedItem = (newSelected) => {
-    console.log('changing selected to', newSelected)
     this.setState({
       selectedCoffee: newSelected
     });

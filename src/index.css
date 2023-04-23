@@ -197,6 +197,12 @@ header h1 {
   color: gray;
 }
 
+input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0.5rem;
+}
+
 form {
   width: 24rem;
 }
@@ -216,6 +222,7 @@ form textarea {
 
 .form-row {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding: 0.25rem;
   gap: 1rem;
@@ -320,7 +327,9 @@ form textarea {
   height: 10rem;
   align-self: center;
   margin: 1rem;
+  margin-top: 2rem;
   border-radius: 0 0 40% 40%;
+  /* background-color: rgb(206, 118, 36, 0.5); */
   border: 0.5rem solid rgb(206, 118, 36);
   border-top: none;
   background-image: url(../public/coffeebeans.png);

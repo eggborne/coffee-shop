@@ -68,7 +68,7 @@ class BagDetails extends React.Component {
           <div>Name: {this.props.name}</div>
           <div>Origin: {this.props.origin}</div>
           <div>Roast: {this.props.roast}</div>
-          <div>Price: {formattedPrice}</div>
+          <div>Price per lb.: {formattedPrice}</div>
           <div>Quantity: {parseInt(this.props.quantity)} lbs.</div>
           <div>id: {this.props.id}</div>
           <div className='button-area'>

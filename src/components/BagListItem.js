@@ -18,7 +18,7 @@ function BagListItem(props) {
       <div>{props.bag.name}</div>
       <div>Origin: {props.bag.origin}</div>
       <div>Roast: {props.bag.roast}</div>
-      <div>Price: {formattedPrice}</div>
+      <div>Price per lb.: {formattedPrice}</div>
       <div>Quantity: {props.bag.quantity} lbs.</div>
       <div className='id-tag'>id: {props.bag.id}</div>
       <BagDisplay quantity={props.bag.quantity} />

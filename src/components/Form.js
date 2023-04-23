@@ -54,11 +54,11 @@ function Form(props) {
       </div>
       <div className="form-row">
         <label for="price">Price</label>
-        <input placeholder={props.editingItem && props.editingItem.price} name="price" type="number" />
+        <input min='1' defaultValue={props.editingItem ? props.editingItem.price : ''} placeholder={props.editingItem && props.editingItem.price} name="price" type="number" />
       </div>
       <div className={`form-row${props.editingItem ? '' : ' hidden'}`}>
         <label for="quantity">Quantity</label>
-        <input defaultValue={props.editingItem ? props.editingItem.quantity : '130'} name="quantity" type="number" />
+        <input min='0' max='130' defaultValue={props.editingItem ? props.editingItem.quantity : '130'} name="quantity" type="number" />
       </div>
       <div className="form-row buttons">
         <button type="submit" className='green'>Save</button>

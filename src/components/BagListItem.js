@@ -3,8 +3,16 @@ import PropTypes from 'prop-types';
 
 function BagListItem(props) {
   const formattedPrice = '$' + (props.bag.price / 100);
+  console.log('quantity', props.bag.quantity, typeof props.bag.quantity)
+  const listItemClass = props.bag.quantity >= 10 ? 
+      'item-list-entry' 
+      : 
+      props.bag.quantity > 0 ?
+      'item-list-entry low-warning'
+      :
+      'item-list-entry low-warning out-of-stock';
   return (
-    <div className='item-list-entry'>
+    <div className={listItemClass}>
       <div>Name: {props.bag.name}</div>
       <div>Origin: {props.bag.origin}</div>
       <div>Roast: {props.bag.roast}</div>

@@ -11,7 +11,7 @@ class CoffeeControl extends React.Component {
     super(props);
     this.state = {
       bagList: [
-       { name: 'Sumatra', origin: 'Kenya', roast: 'light', price: 1295, quantity: 130, id: v4() },
+       { name: 'Sumatra', origin: 'Kenya', roast: 'light', price: 1295, quantity: 12, id: v4() },
       ],
       selectedCoffee: null,
       modalShowing: null,

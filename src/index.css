@@ -109,13 +109,37 @@ header h1 {
 .item-list-entry, .item-detail-entry {
   position: relative;
   border: 1px solid black;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
   min-width: 20rem;
   width: 32%;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   padding-bottom: 2rem;
+}
+
+.item-list-entry.low-warning::after,
+.item-detail-entry.low-warning::after {
+  position: absolute;
+  content: 'ALMOST EMPTY';
+  color: orange;
+  font-weight: bold;
+  height: 100%;
+  top: 0;
+  right: 0;
+  padding: 0.25rem 1rem;
+  font-size: 2rem;
+  pointer-events: none;
+}
+
+.item-list-entry.low-warning.out-of-stock::after,
+.item-detail-entry.low-warning.out-of-stock::after {
+  content: 'OUT OF STOCK';
+  color: red;
+}
+
+.item-list-entry.low-warning::after {
+  font-size: 1rem;
 }
 
 .item-detail-entry {

@@ -19,6 +19,14 @@ class BagDetails extends React.Component {
 
   render() {
     const formattedPrice = '$' + (this.props.price / 100);
+    const detailsClass = this.props.quantity >= 10 ? 
+      'item-detail-entry' 
+      : 
+      this.props.quantity > 0 ?
+      'item-detail-entry low-warning'
+      :
+      'item-detail-entry low-warning out-of-stock';
+
     return (
       <React.Fragment>
         <Modal 
@@ -55,7 +63,7 @@ class BagDetails extends React.Component {
         />
 
         <h2>Details for {this.props.name}</h2>
-        <div className='item-detail-entry'>
+        <div className={detailsClass}>
           <div>Name: {this.props.name}</div>
           <div>Origin: {this.props.origin}</div>
           <div>Roast: {this.props.roast}</div>

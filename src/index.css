@@ -99,29 +99,6 @@ header h1 {
   margin: 0;
 }
 
-.item-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin: 1rem 0;
-}
-
-.item-list-entry, .item-detail-entry {
-  position: relative;
-  border: 1px solid black;
-  padding: 1.5rem 1rem;
-  min-width: 20rem;
-  width: 32%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding-bottom: 2rem;
-}
-
-.item-list-entry {
-  /* flex-direction: row; */
-}
-
 .item-list-entry.low-warning::after,
 .item-detail-entry.low-warning::after {
   box-sizing: border-box;
@@ -155,7 +132,7 @@ header h1 {
 }
 
 .item-detail-entry {
-  width: unset;
+  width: unset !important;
 }
 
 .light {
@@ -194,7 +171,7 @@ header h1 {
   bottom: 0.25rem;
   right: 0.25rem;
   font-size: 75%;
-  color: gray;
+  color: rgb(45, 45, 45);
 }
 
 input, select, textarea {
@@ -329,7 +306,6 @@ form textarea {
   margin: 1rem;
   margin-top: 2rem;
   border-radius: 0 0 40% 40%;
-  /* background-color: rgb(206, 118, 36, 0.5); */
   border: 0.5rem solid rgb(206, 118, 36);
   border-top: none;
   background-image: url(../public/coffeebeans.png);

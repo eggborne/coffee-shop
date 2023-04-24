@@ -3,9 +3,15 @@ import PropTypes from 'prop-types';
 import BagListItem from './BagListItem';
 
 function BagList(props) {
+  const itemListStyle = {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '1rem',
+    margin: '1rem 0',
+  };
   return (
     <React.Fragment>
-      <div className="item-list">
+      <div style={itemListStyle}>
         {props.bagList.length ?
           props.bagList.map(bag =>
             <BagListItem 

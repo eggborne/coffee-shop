@@ -27,7 +27,17 @@ class BagDetails extends React.Component {
       'item-detail-entry low-warning'
       :
       'item-detail-entry low-warning out-of-stock';
-
+    const bagDetailStyle = {
+      position: 'relative',
+      border: '1px solid black',
+      padding: '1.5rem 1rem',
+      minWidth: '20rem',
+      width: '32%',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '0.5rem',
+      paddingBottom: '2rem',
+    };
     return (
       <React.Fragment>
         <Modal 
@@ -64,7 +74,7 @@ class BagDetails extends React.Component {
         />
 
         <h2>Details for {this.props.name}</h2>
-        <div className={detailsClass}>
+        <div style={bagDetailStyle} className={detailsClass}>
           <div>Name: {this.props.name}</div>
           <div>Origin: {this.props.origin}</div>
           <div>Roast: {this.props.roast}</div>
@@ -77,7 +87,7 @@ class BagDetails extends React.Component {
             <button disabled={this.props.quantity === 0} onClick={() => this.props.onClickAdjustQuantity(this.props.id, -1)} className='green'>{this.props.quantity === 0 ? 'SOLD OUT' : 'Sell 1 lb.'}</button>
             <button disabled={this.props.quantity === 130} onClick={() => this.props.onClickAdjustQuantity(this.props.id, 1)} className='orange'>{this.props.quantity === 130 ? 'BAG FULL' : 'Restock 1 lb.'}</button>
           </div>
-          <BagDisplay quantity={this.props.quantity} />
+          <BagDisplay quantity={this.props.quantity} filled={true}/>
         </div>
         <button onClick={this.props.onClickBackToList}>Back to list</button>
       </React.Fragment>

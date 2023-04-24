@@ -13,15 +13,26 @@ function BagListItem(props) {
         :
         'item-list-entry low-warning out-of-stock';
   listItemClass += (' ' + props.bag.roast);
+  const itemListEntryStyle = {
+    position: 'relative',
+    border: '1px solid black',
+    padding: '1.5rem 1rem',
+    minWidth: '20rem',
+    width: '32%',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.5rem',
+    paddingBottom: '2rem',
+  };
   return (
-    <div className={listItemClass}>
+    <div style={itemListEntryStyle} className={listItemClass}>
       <div>{props.bag.name}</div>
       <div>Origin: {props.bag.origin}</div>
       <div>Roast: {props.bag.roast}</div>
       <div>Price per lb.: {formattedPrice}</div>
       <div>Quantity: {props.bag.quantity} lbs.</div>
       <div className='id-tag'>id: {props.bag.id}</div>
-      <BagDisplay quantity={props.bag.quantity} />
+      <BagDisplay quantity={props.bag.quantity} filled={true} />
       <div className='button-area'>
         <button onClick={() => props.onClickViewDetails(props.bag)}>View Details</button>
       </div>
